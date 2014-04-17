@@ -7,8 +7,9 @@ printf "\n"
 
 if [ ! -f /usr/local/bin/composer ];
 then
-	curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1 &
-	sudo mv composer.phar /usr/local/bin/composer > /dev/null 2>&1 &
+	cd /home/vagrant/
+	curl -sS https://getcomposer.org/installer | php 
+	sudo mv composer.phar /usr/local/bin/composer
 
 	echo "Composer installed successfully!"
 	printf "\n"
