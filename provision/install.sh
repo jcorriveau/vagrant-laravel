@@ -20,9 +20,9 @@ sh /vagrant/provision/httpd.sh $1
 
 #sh /vagrant/provision/php.sh $1
 #sh /vagrant/provision/composer.sh
-
-echo "END"
 printf "\n"
-echo "================================================================================"
-echo "                            INSTALLING SOFTWARES DONE!                          "
-echo "================================================================================"
+echo "ALL DONE!"
+echo "REBOOTING NOW ..."
+printf "\n"
+
+sh /vagrant/provision/reboot.sh

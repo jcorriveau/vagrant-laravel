@@ -6,9 +6,9 @@ echo "**************************************************************************
 printf "\n"
 
 if ! rpm -qa | grep -qw fish; then
-    sudo yum install http://fishshell.com/files/2.1.0/linux/RedHat_RHEL-5/fish-2.1.0-2.1.i386.rpm -y --quiet
+    sudo yum install fish -y --quiet
 
-    sudo chsh -s /usr/bin/fish vagrant
+    sudo chsh -s /usr/bin/fish vagrant > /dev/null 2>&1 &
 
     mkdir -p /home/vagrant/.config/fish/
 
