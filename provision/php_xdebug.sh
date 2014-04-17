@@ -1,4 +1,4 @@
-sudo yum --enablerepo=remi,remi-php55 install php-xdebug -y --quiet
+sudo yum install php-xdebug -y --quiet
 
 cat << EOF >> /etc/php.d/xdebug.ini
 xdebug.scream=1

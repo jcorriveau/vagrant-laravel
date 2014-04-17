@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "********************************************************************************"
-echo "                               INSTALLING APACHE2                               "
+echo "                               INSTALLING HTTPD                                 "
 echo "********************************************************************************"
 printf "\n"
 
@@ -23,7 +23,7 @@ if ! rpm -qa | grep -qw httpd; then
 		sudo ln -fs /vagrant/public /var/www/html
 	fi
 
-	#sudo chown -R vagrant:vagrant /var/www
+	sudo chown -R vagrant:vagrant /var/www
 
     sudo systemctl start httpd.service > /dev/null 2>&1 &
     sudo systemctl enable httpd.service > /dev/null 2>&1 &
@@ -33,18 +33,14 @@ if ! rpm -qa | grep -qw httpd; then
     sudo firewall-cmd --permanent --zone=public --add-port=80/tcp > /dev/null 2>&1 &
     sudo firewall-cmd --permanent --zone=public --add-service=http > /dev/null 2>&1 &
 
-    sudo systemctl restart firewalld.service
-
 	sudo sed -i 's,#\(LoadModule rewrite_module modules/mod_rewrite.so\),\1,g' /etc/httpd/conf/httpd.conf
     sudo sed -i 's/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
-    #sudo sed -i 's#User apache#User vagrant#' /etc/httpd/conf/httpd.conf
-	#sudo sed -i 's#Group apache#User vagrant#' /etc/httpd/conf/httpd.conf
+    sudo sed -i 's#User apache#User vagrant#' /etc/httpd/conf/httpd.conf
+	sudo sed -i 's#Group apache#User vagrant#' /etc/httpd/conf/httpd.conf
 
-	sudo systemctl restart httpd.service
-
-	echo "Apache2 installed successfully!"
+	echo "HTTPD installed successfully!"
 	printf "\n"
 else
-	echo "Apache2 already installed!"
+	echo "HTTPD already installed!"
 	printf "\n"
 fi

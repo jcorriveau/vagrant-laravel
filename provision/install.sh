@@ -9,6 +9,8 @@ echo "START ..."
 printf "\n"
 
 sh /vagrant/provision/update.sh
+sh /vagrant/provision/expect.sh
+sh /vagrant/provision/spawn.sh
 sh /vagrant/provision/git.sh
 sh /vagrant/provision/fish.sh
 sh /vagrant/provision/httpd.sh $1

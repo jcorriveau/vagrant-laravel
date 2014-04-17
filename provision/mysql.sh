@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 echo "********************************************************************************"
-echo "                                INSTALLING MYSQL                                "
+echo "                                INSTALLING MARIADB                                "
 echo "********************************************************************************"
 printf "\n"
 
-if ! rpm -qa | grep -qw mysql-server; then
-    sudo yum install mysql-server mysql -y --quiet
-    sudo service mysqld start > /dev/null 2>&1 &
-	sudo chkconfig mysqld on > /dev/null 2>&1 &
+if ! rpm -qa | grep -qw mariadb-server; then
+    sudo yum install mariadb-server mariadb -y --quiet
+    sudo systemctl start mariadb.service > /dev/null 2>&1 &
+    sudo systemctl enable mariadb.service > /dev/null 2>&1 &
 
-	echo "MySQL installed successfully!"
+	echo "MariaDB installed successfully!"
 	printf "\n"
 	exit 0
 else
-	echo "MySQL already installed!"
+	echo "MariaDB already installed!"
 	printf "\n"
 	exit 1
 fi
