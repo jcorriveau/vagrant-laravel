@@ -36,6 +36,8 @@ if ! rpm -qa | grep -qw httpd; then
     sudo sed -i 's/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
     sudo sed -i 's#User apache#User vagrant#' /etc/httpd/conf/httpd.conf
 	sudo sed -i 's#Group apache#Group vagrant#' /etc/httpd/conf/httpd.conf
+	sudo sed -i 's#DocumentRoot "/var/www/html"#DocumentRoot "/var/www/public"#' /etc/httpd/conf/httpd.conf
+	sudo sed -i 's#<Directory "/var/www/html">#<Directory "/var/www/public">#' /etc/httpd/conf/httpd.conf
 
 	echo "HTTPD installed successfully!"
 	printf "\n"

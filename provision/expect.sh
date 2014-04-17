@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 
-echo "********************************************************************************"
-echo "                             INSTALLING EXPECT                                  "
-echo "********************************************************************************"
-printf "\n"
-
 if ! rpm -qa | grep -qw expect; then
 	sudo yum install expect -y --quiet
 	
-	echo "Expect installed successfully!"
-	printf "\n"
-	exit 0
+	if [[ $? == 0 ]]; then
+		echo -e "\e[97mInstalling expect ...\t\t [\e[92mOK\e[97m]"
+	else
+		echo -e "\e[97mInstalling expect ...\t\t [\e[91mFAILED\e[97m]"
+	fi
 else
-	echo "Expect already installed!"
-	printf "\n"
-	exit 1
+	echo -e "\e[97mInstalling expect ...\t\t [\e[92mOK\e[97m]"
 fi

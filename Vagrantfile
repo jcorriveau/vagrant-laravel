@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 80, host: 8080
 
   config.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777", "fmode=666"]
-  config.vm.synced_folder "public", "/var/www/html", :mount_options => ["dmode=777", "fmode=666"]
+  config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
 
   config.vm.provision :shell, :path => "provision/install.sh", :args => "laravel"
   

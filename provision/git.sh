@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 
-echo "********************************************************************************"
-echo "                                INSTALLING GIT                                  "
-echo "********************************************************************************"
-printf "\n"
-
 if ! rpm -qa | grep -qw git; then
     sudo yum install git -y --quiet
 
-	echo "Git installed successfully!"
-	printf "\n"
-	exit 0
+	if [[ $? == 0 ]]; then
+		echo -e "\e[97mInstalling git ...\t\t [\e[92mOK\e[97m]"
+	else
+		echo -e "\e[97mInstalling git ...\t\t [\e[91mFAILED\e[97m]"
+	fi
 else
-	echo "Git already installed!"
-	printf "\n"
-	exit 1
+	echo -e "\e[97mInstalling git ...\t\t [\e[92mOK\e[97m]"
 fi

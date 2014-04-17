@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 
-echo "********************************************************************************"
-echo "                             INSTALLING CURL                                    "
-echo "********************************************************************************"
-printf "\n"
-
 if ! rpm -qa | grep -qw curl; then
 	sudo yum install curl -y --quiet
 	
-	echo "Curl installed successfully!"
-	printf "\n"
-	exit 0
+	if [[ $? == 0 ]]; then
+		echo -e "\e[97mInstalling curl ...\t\t [\e[92mOK\e[97m]"
+	else
+		echo -e "\e[97mInstalling curl ...\t\t [\e[91mFAILED\e[97m]"
+	fi
 else
-	echo "Curl already installed!"
-	printf "\n"
-	exit 1
+	echo -e "\e[97mInstalling curl ...\t\t [\e[92mOK\e[97m]"
 fi

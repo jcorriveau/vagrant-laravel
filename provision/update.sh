@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-echo "********************************************************************************"
-echo "                             UPDATING PACKAGE LIST                              "
-echo "********************************************************************************"
-printf "\n"
-
 sudo yum check-update --quiet
 sudo yum update -y --quiet
 
-echo "Updating package list done successfully!"
-printf "\n"
+if [[ $? == 0 ]]; then
+	echo -e "\e[97mChecking for updates ...\t [\e[92mOK\e[97m]"
+else
+	echo -e "\e[97mChecking for updates ...\t [\e[91mFAILED\e[97m]"
+fi

@@ -5,7 +5,7 @@ echo "                             INSTALLING SOFTWARES                         
 echo "                        Development environnement for $1                        "
 echo "================================================================================"
 printf "\n"
-echo "START ..."
+echo -e "\e[33mSTART ..."
 printf "\n"
 
 sh /vagrant/provision/update.sh
